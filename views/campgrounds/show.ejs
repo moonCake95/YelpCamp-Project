@@ -1,0 +1,72 @@
+<%- include("../partials/header") %>
+
+  <div class="row justify-content-center">
+    <div class="col-md-9">
+      <div class="card mb-3">
+        <img class="card-img-top" src="<%= campground.image %> " alt="">
+        <div class="card-body">
+          <h5 class="card-title"><a><%= campground.name %></a></h5>
+
+          <p>
+           <em> Submitted by: <a href="/users/<%= campground.author.id %>"><%= campground.author.username %></a>, <%= moment(campground.createdAt).fromNow() %></em>
+          </p>
+
+          <hr class="style">
+
+          <p class="card-text"><%= campground.description %></p>
+
+          <% if (currentUser && campground.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin){ %>
+
+          <a class="btn btn-outline-primary" href="/campgrounds/<%= campground._id%>/edit">
+            Edit
+          </a>
+          <form id="btnD" action="/campgrounds/<%= campground._id %>?_method=DELETE" method="POST">
+            <button class="btn btn-danger">Erase</button>
+          </form>
+          <% } %>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-body">
+          <div class="d-flex justify-content-sm-between">
+                <h4 class="btn btn-outline-primary">Tell Me What Do You Think..</h4>
+            <div class="text-center">
+              <a class="btn btn-success" href="/campgrounds/<%= campground._id %>/comments/new"><i class="far fa-comment"></i> Add New Comment</a>
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <% campground.comments.forEach((comment) => { %>
+            <div class="col-md-12 mb-2">
+              <div class="card">
+                <div class="card-body">
+                  <div class="float-left">
+                    <p class="card-title"><strong><%= comment.author.username %></strong></p>
+                    <p class="card-text"><%= comment.text %></p>
+                  </div>
+                  <div class="float-right">
+                    <p><%= moment(comment.createdAt).fromNow() %></p>
+
+                    <% if(currentUser && comment.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin){ %>
+
+                    <div class="float-right">
+                      <a class="btn btn-sm btn-outline-primary" href="/campgrounds/<%= campground._id %>/comments/<%= comment._id %>/edit">Edit</a>
+                      <form class="btnD" action="/campgrounds/<%= campground._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
+                        <input type="submit" class="btn btn-sm btn-danger" value="Eraise">
+                      </form>
+                    </div>
+    
+                    <% } %> 
+                  </div>
+                </div>
+              </div> 
+            </div>
+            <% }) %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<%- include("../partials/footer") %> 

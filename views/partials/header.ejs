@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Make site responsive on mobile/tablet -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>YelpCamp</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/main.css">
+  </head>
+    <body>
+
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+      <a class="navbar-brand" href="/"><i class="fas fa-campground"></i> YelpCamp</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item <%= typeof page !== 'undefined' && page === 'campgrounds' ? 'active' : '' %>">
+            <a href="/campgrounds" class="nav-link"><i class="fas fa-home"></i> Home</a>
+          </li>
+          <form action="/campgrounds" method="GET" class="form-inline mt-2 mt-md-0">
+            <input class="form-control mr-sm-2" type="text" name="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 mt-md-1 mt-lg-0 my-sm-0" type="submit">Search</button>
+          </form>
+        </ul>
+        <ul class="navbar-nav">
+          <% if(!currentUser){ %>
+              <li class="nav-item <%= typeof page !== 'undefined' && page === 'login' ? 'active' : '' %>">
+                <a href="/login" class="nav-link"><i class="fas fa-sign-in-alt"></i> Login</a>
+              </li>
+              <li class="nav-item <%= typeof page !== 'undefined' && page === 'register' ? 'active' : '' %>">
+                <a href="/register" class="nav-link"><i class="fas fa-user-plus"></i> Sign Up</a>
+              </li>
+          <% } else { %>
+              <li class="nav-item">
+                <a class="nav-link" href="/users/<%= currentUser.id %>"><i class="fas fa-info-circle"></i> User Info</a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">Signed In As <%= currentUser.username %></a>
+              </li>
+              <li class="nav-item">
+                <a href="/logout" class="nav-link"><i class="fas fa-sign-out-alt"></i> Logout</a>
+              </li>
+          <% } %>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="container">
+      <% if(error && error.length > 0){ %> 
+      <div class="alert alert-danger" role="alert">
+        <%= error %>
+      </div>
+      <% } %>
+      <% if(success && success.length > 0){ %> 
+      <div class="alert alert-success" role="alert">
+        <%= success %>
+      </div>
+    <% } %>
+    <% if(info && info.length > 0){ %>
+      <div class="alert alert-info" role="alert">
+        <%= info %> 
+      </div>
+    <% } %>  
+    </div>
+    
+    <div class="container">
+    
+   
+
+    
+    

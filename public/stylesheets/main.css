@@ -1,0 +1,90 @@
+.form-signin {
+  width: 100%;
+  max-width: 330px;
+  padding: 5px;
+  margin: auto;
+}
+
+.form-signin .form-control {
+  position: relative;
+  box-sizing: border-box;
+  height: auto;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+
+.form-signin input[type="text"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-signin input[type="password"] {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+/* /////////////////////// */
+html{
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer heeight */
+  margin-bottom: 60px;
+}
+
+#btnD {
+  display: inline;
+}
+
+.btnD {
+  display: inline;
+}
+
+#searchNav {
+  padding-left: 5px;
+  padding-top: 9px;
+}
+
+h1 {
+  color: white;
+  text-shadow: 2px 2px 4px black;
+}
+
+h1.userList {
+  color: royalblue;
+  text-shadow: 2px 2px 4px black;
+}
+
+#userList {
+  list-style: none;
+}
+
+#pMain {
+  color: white;
+  font-size: 1.5em;
+  text-shadow: 2px 2px 4px black;
+}
+
+#Cimg {
+  background-image: url(https://cdn.pixabay.com/photo/2019/06/28/03/07/camping-4303357__480.jpg);
+
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+/* Gradient transparent - color - transparent */
+
+hr.style {
+  border: 0;
+  height: 1px;
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+}
+
+.text-shadow {
+  text-shadow: 3px 3px 4px royalblue;
+}
